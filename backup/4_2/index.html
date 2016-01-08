@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>페이지 관리 예제 </title>
+
+    <link rel="stylesheet" href="../libs/mklib/css/mklib.css">
+    <link rel="stylesheet" href="../libs/mklib/css/card.css">
+    <link rel="stylesheet" href="../libs/mklib/css/popup.css">
+    <link rel="stylesheet" href="../libs/mklib/css/tab.css">
+    <link rel="stylesheet" href="../libs/mklib/css/page.css">
+
+
+    <script src="../libs/extra/jquery-2.0.3.min.js"></script>
+    <script src="../libs/extra/async.js"></script>
+    <script src="../libs/extra/d3.min.js"></script>
+
+    <script type="text/javascript" src="../libs/mklib/js/iscroll.js"></script>
+    <script type="text/javascript" src="../libs/mklib/js/core.js"></script>
+    <script type="text/javascript" src="../libs/mklib/js/page.js"></script>
+    <script type="text/javascript" src="../libs/mklib/js/os.js"></script>
+
+    <script src="app.js"></script>
+
+    <script data-main="amd/main" src="amd/lib/require.js"></script>
+
+</head>
+<body>
+
+<div id="bootloader-screen"  style="
+position : absolute;top:0px;bottom:0px;
+width: 100%;
+background-color: #000000;
+color: #00ae00" >
+
+    <ul class="console" style="list-style : none;background-color: inherit;" >
+
+    </ul>
+
+</div>
+
+<div id="root-container" style="display: none;" >
+
+    <div class="mk-page" id="page-main" >
+
+        <div class="mk-header">
+            <a>Hello</a>
+
+            <span class="next-btn" style="
+            position: absolute;
+right: 11px;
+font-size: 25px;"> > </span>
+
+        </div>
+
+        <div class="mk-content" >
+
+
+        </div>
+
+        <div class="mk-footer">
+
+
+        </div>
+    </div>
+
+    <div class="mk-page" id="page-second" >
+
+        <div class="mk-header">
+
+            <span class="back-btn" style="
+            position: absolute;
+left: 11px;
+font-size: 25px;"> < </span>
+
+
+        </div>
+
+        <div class="mk-content" >
+
+
+        </div>
+
+        <div class="mk-footer">
+
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    async.waterfall(
+            [
+                //부트로더
+                function(next) {
+
+                    theApp.kernel = ohmOS.kernel({
+                        dom_screen : document.getElementById('bootloader-screen')
+                    });
+
+                    theApp.kernel.printf('start ohmOS-html5 system v1.0');
+
+                    //amd 모듈 세팅할 준비가 되면
+                    theApp.onAMD_Load = function() {
+                        theApp.kernel.printf('now read AMD system');
+                        next(null);
+                    }
+                },
+                function(next) {
+
+                    theApp.kernel.printf('now loading AMD...');
+
+                    //amd 셋업
+                    theApp.amd.setupAMD(function() {
+
+                        theApp.kernel.printf('AMD complete');
+
+                        next(null);
+
+                    });
+                },
+                function(next) {
+
+                    //화면 전환
+                    setTimeout(function() {
+                        document.getElementById('bootloader-screen').style.display = 'none';
+                        document.getElementById('root-container').style.display = 'block';
+                        next(null);
+
+                    },80);
+                }
+            ],
+            function(error,results) {
+
+                if(!error) { //에러 없이 모두 과정 마침..
+
+                    console.log('start app');
+
+                    //메인 페이지로 시작하기
+                    mk.pageManager.setup({
+                        startPage : "mainPage", //시작페이지 지정
+                        pages : {
+                        //페이지들 선언
+                            mainPage: mk.createPage({
+                                dom: document.getElementById('page-main'),
+                                card: theApp.amd.card.hello,
+                                setup: function () {
+
+                                    //페이지영역(헤더,푸터)에 대한 이밴트 핸들링을 해준다.
+
+                                    console.log('first page setup');
+
+                                    //다음페이지로가기
+                                    this.dom.querySelector('.next-btn').addEventListener(theApp.event.downEvent,function() {
+
+                                        mk.pageManager.changePage("secondPage");
+
+                                    });
+
+                                }
+                            }),
+                            secondPage: mk.createPage({
+                                dom: document.getElementById('page-second'),
+                                card: theApp.amd.card.test,
+                                setup: function () {
+
+                                    console.log('second page setup');
+
+                                    //메인페이지로 가기
+                                    this.dom.querySelector('.back-btn').addEventListener(theApp.event.downEvent,function() {
+
+                                        mk.pageManager.changePage("mainPage");
+
+                                    });
+                                }
+                            })
+                        }
+                    });
+                    ////////setup end
+                }
+                else {
+                    console.log(error);
+                    alert(JSON.stringify(error));
+                }
+
+            }
+    );
+
+
+</script>
+
+
+</body>
+</html>

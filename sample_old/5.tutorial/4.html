@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>LBM</title>
+
+    <link rel="stylesheet" href="../libs/mklib/css/mklib.css">
+    <link rel="stylesheet" href="../libs/mklib/css/card.css">
+    <link rel="stylesheet" href="../libs/mklib/css/popup.css">
+    <link rel="stylesheet" href="../libs/mklib/css/tab.css">
+    <link rel="stylesheet" href="../libs/mklib/css/page.css">
+
+
+    <script src="../libs/extra/jquery-2.0.3.min.js"></script>
+    <script src="../libs/extra/async.js"></script>
+    <script src="../libs/extra/d3.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript" src="../libs/mklib/js/iscroll.js"></script>
+    <script type="text/javascript" src="../libs/mklib/js/core.js"></script>
+    <script type="text/javascript" src="../libs/mklib/js/page.js"></script>
+    <script type="text/javascript" src="../libs/mklib/js/os.js"></script>
+
+    <script src="app.js"></script>
+
+    <script data-main="amd/main" src="amd/lib/require.js"></script>
+
+    <style>
+        #page-list .mk-footer .tab-btn {
+            /*border-right: 1px solid #a0a0a0;*/
+            width: 19%;
+            height: 45px;
+            line-height: 40px;
+            text-align: center;
+            color: rgb(206, 206, 206);
+            font-size: 13px;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="bootloader-screen"  style="
+position : absolute;top:0px;bottom:0px;
+width: 100%;
+background-color: #000000;
+color: #00ae00" >
+
+    <ul class="console" style="list-style : none;background-color: inherit;" >
+
+    </ul>
+
+</div>
+
+<div id="root-container" style="display: none;" >
+
+    <div class="mk-page" id="page-main" >
+
+        <div class="mk-header">
+            <a>The LBM</a>
+        </div>
+
+        <div class="mk-content" style="bottom: 0px;" >
+
+
+        </div>
+    </div>
+
+    <div class="mk-page" id="page-list" >
+
+        <div class="mk-header">
+
+            <span class="back-btn" style="
+            position: absolute;
+            width: 40px;
+            border-radius: 8px;
+            /*background-color: rgba(76, 76, 76, 0.22);*/
+left: 11px;
+font-size: 25px;"> < </span>
+
+            <a>수업 자료</a>
+
+            <span class="add-btn" style="
+            position: absolute;
+            width: 40px;
+            border-radius: 8px;
+            /*background-color: rgba(76, 76, 76, 0.22);*/
+right: 11px;
+font-size: 25px;"> + </span>
+
+
+        </div>
+
+        <div class="mk-content"  >
+
+
+        </div>
+
+        <div class="mk-footer">
+
+            <div class="tab-btn" style="border-right: 1px solid #a0a0a0;" > 홈 </div>
+            <div class="tab-btn" style="border-right: 1px solid #a0a0a0;"> 내강의실 </div>
+            <div class="tab-btn" style="border-right: 1px solid #a0a0a0;"> 특강 </div>
+            <div class="tab-btn" style="border-right: 1px solid #a0a0a0;"> 공지 </div>
+            <div class="tab-btn"> 설정 </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    async.waterfall(
+            [
+                //부트로더
+                function(next) {
+
+                    theApp.kernel = ohmOS.kernel({
+                        dom_screen : document.getElementById('bootloader-screen')
+                    });
+
+                    theApp.kernel.printf('start ohmOS-html5 system v1.0');
+
+                    //amd 모듈 세팅할 준비가 되면
+                    theApp.onAMD_Load = function() {
+                        theApp.kernel.printf('now read AMD system');
+                        next(null);
+                    }
+                },
+                function(next) {
+
+                    theApp.kernel.printf('now loading AMD...');
+
+                    //amd 셋업
+                    theApp.amd.setupAMD(function() {
+
+                        theApp.kernel.printf('AMD complete');
+
+                        next(null);
+
+                    });
+                },
+                function(next) {
+
+                    //화면 전환
+                    setTimeout(function() {
+                        document.getElementById('bootloader-screen').style.display = 'none';
+                        document.getElementById('root-container').style.display = 'block';
+                        next(null);
+
+                    },80);
+                }
+            ],
+            function(error,results) {
+
+                if(!error) { //에러 없이 모두 과정 마침..
+
+                    theApp.amd.popup.detail.show();
+
+                }
+                else {
+                    console.log(error);
+                    alert(JSON.stringify(error));
+                }
+
+            }
+    );
+
+
+</script>
+
+
+</body>
+</html>

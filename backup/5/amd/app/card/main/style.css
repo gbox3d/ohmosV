@@ -1,0 +1,26 @@
+#card-main.mk-card {
+    background-color: #f5f5f5;
+
+}
+
+#card-main .mk-scroller li {
+    background-color: transparent;
+    border: 0px;
+}
+
+#card-main .mk-scroller li.menu .btn {
+    background-color: ghostwhite;
+    display: inline-block;
+    padding: 5px;
+    width: 25%;
+    height: 64px;
+    line-height: 64px;
+    border-bottom: 1px solid #e5e5ec;
+    -webkit-box-shadow:5px 5px 20px #000000;
+    border-radius: 8px;
+    margin: 0px 5px;
+}
+
+#card-main .mk-scroller li.menu .btn.pressed {
+    -webkit-box-shadow:3px 3px 10px #000000;
+}

@@ -1,0 +1,16 @@
+#card-hello .btn {
+    text-align: center;
+    /*width: 80px;*/
+    margin-right: 5px;
+    background-color: #ff0000;
+    color: white;
+    position: absolute;
+    -webkit-transform: translateX(-50%);
+    border-radius: 4px;
+
+    /*right: 0px;*/
+}
+
+#card-hello .btn.pressed {
+    background-color: #3cff3b;
+}

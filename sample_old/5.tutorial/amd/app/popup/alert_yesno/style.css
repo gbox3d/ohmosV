@@ -1,0 +1,29 @@
+#amd-popup-yesno .blinder {
+    display: none;
+}
+#amd-popup-yesno .frame .btn {
+    position: absolute;
+
+    border-top: 1px solid lightgray;
+    font-size: 17px;
+    width: 50%;
+    background-color: #EEEFF3;
+    color:#2576FC;
+    border-bottom-right-radius: 0px;
+    border-right: 1px solid lightgray;
+}
+
+#amd-popup-yesno .frame .btn.press {
+    background-color: darkgray;
+    color: #2576FC;
+}
+
+#amd-popup-yesno .blinder.active {
+    display: block;
+}
+
+#amd-popup-yesno .frame .body.maxHeight {
+    height: 250px;
+    overflow-y: auto;
+}
+

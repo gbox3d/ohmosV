@@ -1,0 +1,26 @@
+#card-list ul li .index {
+    width: 10%;
+    display: inline-block;
+    border-right: 1px solid  rgba(221, 221, 221, 1);
+
+
+}
+
+#card-list ul li .title-text {
+
+    width: 65%;
+    display: inline-block;
+    border-right: 1px solid  rgba(221, 221, 221, 1);
+
+    padding-left: 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+}
+
+#card-list ul li .status-icon {
+    width: 18%;
+    display: inline-block;
+    /*position: absolute;*/
+    /*right: 30px;*/
+}
