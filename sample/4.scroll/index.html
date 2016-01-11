@@ -15,6 +15,8 @@
     <script src="../../libs/extra/jquery-2.0.3.min.js"></script>
     <script src="../../libs/extra/async.js"></script>
 
+    <script src="../../libs/iscroll/iscroll.js"></script>
+
     <link rel="stylesheet" href="../../libs/bootstrap/css/bootstrap.min.css">
     <script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
 
@@ -24,10 +26,13 @@
 </head>
 <body style="margin: 0px" >
 
-<div id="root-container" class="container">
+<div id="root-container" >
 </div>
 
-<script>theApp.setup()</script>
+<script>
+    theApp.setup()
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
 
 </body>
 </html>
