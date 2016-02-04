@@ -41,6 +41,10 @@ var theApp = {
                                     {
                                         name : 'testPage',
                                         type : 'panel'
+                                    },
+                                    {
+                                        name : 'testPage2',
+                                        type : 'panel'
                                     }
                                 ],
                                 callback : function() {
@@ -55,7 +59,7 @@ var theApp = {
 
                     if(!error) { //에러 없이 모두 과정 마침..
                         console.log('success start app');
-                        scope.amd.panel.testPage.show();
+                        scope.amd.panel['testPage2'].show();
 
                     }
                     else {

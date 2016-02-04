@@ -15,6 +15,7 @@ requirejs.config({
 
 theApp.module = {};
 theApp.amd = {
+    panel : {},
     popup : {},
     card : {}
 };
@@ -22,7 +23,7 @@ theApp.amd = {
 
 theApp.amd.setupAMD = function (option) {
 
-    console.log('start amd loader system 1.1')
+    console.log('start amd loader system 1.1a')
 
     function requirejs_addPanelModule(name,callback) {
 
@@ -42,10 +43,10 @@ theApp.amd.setupAMD = function (option) {
 
             module.setup(name);
 
-            theApp.amd.popup[name] = module;
+            theApp.amd.panel[name] = module;
             //theApp.module['panel_' + name] = module;
 
-            console.log(name + ' module load success');
+            console.log(name + ' panel module load success');
 
             if(callback) {
                 callback();
@@ -77,7 +78,7 @@ theApp.amd.setupAMD = function (option) {
             theApp.amd.popup[name] = module;
             //theApp.module['popup_' + name] = module;
 
-            console.log(name + ' module load success');
+            console.log(name + ' popup module load success');
 
             if(callback) {
                 callback();
@@ -104,11 +105,11 @@ theApp.amd.setupAMD = function (option) {
             scriptEl.innerText = css;
             document.getElementsByTagName('head')[0].appendChild(scriptEl);
 
-            module.setup('amd-popup-'+name);
+            module.setup(name);
 
             theApp.amd.card[name] = module;
 
-//            console.log(name + ' module load success');
+            console.log(name + ' card module load success');
             //kernel_printf(name + ' module load success');
             //next(null);
 
