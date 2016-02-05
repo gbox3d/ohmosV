@@ -2,8 +2,6 @@
  * Created by gbox3d on 2014. 2. 26..
  */
 
-
-
 var theApp = {
 
     version : '0.0.1',
@@ -13,70 +11,48 @@ var theApp = {
     },
     setup : function() {
 
+        console.log('start setup App')
         var scope = this;
+        async.waterfall(
+            [
+                //amd 셋업
+                function(next) {
 
-        (function() {
-
-            async.waterfall(
-                [
-                    //부트로더
-                    function(next) {
-                        //amd 모듈 세팅할 준비가 되면
-                        scope.onAMD_Load = function() {
-                            console.log('now read AMD system')
-                            next();
-
-                        }
-                    },
-                    function(next) {
-
-                        //amd 셋업
-                        /*
-                        scope.amd.setupAMD(function() {
-                            console.log('AMD complete');
-                            next(null);
-
-                        });
-                        */
-                        scope.amd.setupAMD({
-                            modules : [
-                                {
-                                    name : 'testDlg',
-                                    type : 'popup'
-                                }
-
-                            ],
-                            callback : function() {
-                                next();
-                            }
-                        })
-                    }
-                ],
-                function(error,results) {
-
-                    if(!error) { //에러 없이 모두 과정 마침..
-                        console.log('success start app')
-                        scope.amd.popup['testDlg'].show(
+                    scope.amd.setupAMD({
+                        modules : [
                             {
-                                usr_name : 'gbox',
-                                callback : function(val) {
-                                    alert(val);
-                                }
+                                name : 'testDlg',
+                                type : 'popup'
                             }
-                        );
 
-                    }
-                    else {
-                        console.log(error);
-                        alert(JSON.stringify(error));
-
-                    }
+                        ],
+                        callback : function() {
+                            next();
+                        }
+                    })
+                }
+            ],
+            function(error,results) {
+                if(!error) { //에러 없이 모두 과정 마침..
+                    console.log('success start app')
+                    scope.amd.popup['testDlg'].show(
+                        {
+                            usr_name : 'gbox',
+                            callback : function(val) {
+                                alert(val);
+                            }
+                        }
+                    );
 
                 }
-            );
+                else {
+                    console.log(error);
+                    alert(JSON.stringify(error));
 
-        }).bind(theApp)()
+                }
+
+            }
+        );
 
     }
 };
-

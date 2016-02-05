@@ -7,7 +7,7 @@ define(
 
         var this_dom,callback;
 
-        return {
+        var property = {
             setup : function(name) {
 
                 this_dom = document.querySelector("#amd-popup-" + name);
@@ -24,6 +24,7 @@ define(
 
                 this_dom.querySelector('#usr').value = option.usr_name;
                 callback = option.callback;
+
                 $(this_dom.querySelector('.modal')).modal();
 
             },
@@ -33,5 +34,7 @@ define(
 
             }
         };
+        return property
+
     }
 );

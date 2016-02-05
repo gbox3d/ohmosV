@@ -27,7 +27,13 @@
 <div id="root-container">
 </div>
 
-<script>theApp.setup()</script>
+<script>
+
+
+    document.addEventListener('OSVLoaded', function() {
+        theApp.setup()
+    });
+</script>
 
 </body>
 </html>

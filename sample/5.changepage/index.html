@@ -10,7 +10,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Expires" content="-1">
 
-    <title> 다중페이지 예제 </title>
+    <title> 페이지 전환 예제 </title>
 
     <script src="../../libs/extra/jquery-2.0.3.min.js"></script>
     <script src="../../libs/extra/async.js"></script>
@@ -27,7 +27,11 @@
 <div  id="root-container">
 </div>
 
-<script>theApp.setup()</script>
+<script>
+    document.addEventListener('OSVLoaded', function() {
+        theApp.setup()
+    });
+</script>
 
 </body>
 </html>
