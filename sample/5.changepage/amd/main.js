@@ -29,7 +29,7 @@ requirejs.config({
 
         function requirejs_addPanelModule(name,callback) {
 
-            require([
+            requirejs([
                 'app/panel/'+ name +'/control',
                 'text!app/panel/'+ name + '/directive.html',
                 'text!app/panel/' + name + '/style.css'
@@ -61,7 +61,7 @@ requirejs.config({
 
         function requirejs_addPopupModule(name,callback) {
 
-            require([
+            requirejs([
                 'app/popup/'+ name +'/control',
                 'text!app/popup/'+ name + '/directive.html',
                 'text!app/popup/' + name + '/style.css'
@@ -93,7 +93,7 @@ requirejs.config({
 
         function requirejs_addCardModule(name,selector,callback) {
 
-            require([
+            requirejs([
                 'app/'+ name +'/control',
                 'text!app/'+ name + '/directive.html',
                 'text!app/' + name + '/style.css'
