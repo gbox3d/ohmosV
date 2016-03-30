@@ -25,7 +25,7 @@ requirejs.config({
 
     theApp.amd.setupAMD = function (option) {
 
-        console.log('start amd loader system 1.2')
+        console.log('start amd loader system 1.2a')
 
         function requirejs_addPanelModule(name,callback) {
 
@@ -91,12 +91,41 @@ requirejs.config({
 
         }
 
-        function requirejs_addCardModule(name,selector,callback) {
+        function requirejs_addCardModule(name,callback) {
 
             requirejs([
-                'app/'+ name +'/control',
-                'text!app/'+ name + '/directive.html',
-                'text!app/' + name + '/style.css'
+                'app/card/'+ name +'/control',
+                'text!app/card/'+ name + '/directive.html',
+                'text!app/card/' + name + '/style.css'
+            ], function (module,html,css) {
+
+                var temp = document.createElement('div');
+                temp.innerHTML = html;
+                document.getElementById('root-container').appendChild(temp.children[0]);
+
+                var scriptEl = document.createElement('style');
+                scriptEl.innerText = css;
+                document.getElementsByTagName('head')[0].appendChild(scriptEl);
+
+                module.setup(name);
+
+                theApp.amd.card[name] = module;
+                //theApp.module['popup_' + name] = module;
+
+                console.log(name + ' card module load success');
+
+                if(callback) {
+                    callback();
+                }
+
+
+            });
+
+            /*
+            requirejs([
+                'app/card/'+ name +'/control',
+                'text!app/card/'+ name + '/directive.html',
+                'text!app/card/' + name + '/style.css'
             ], function (module,html,css) {
 
                 var temp = document.createElement('div');
@@ -120,6 +149,7 @@ requirejs.config({
                 }
 
             });
+            */
         }
 
         var load_proc = [];

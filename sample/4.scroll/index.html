@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="../../libs/bootstrap/css/bootstrap.min.css">
     <script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="app.js"></script>
     <script data-main="amd/main" src="amd/lib/require.js"></script>
+    <script src="app.js"></script>
+
 
 </head>
 <body style="margin: 0px" >
@@ -30,8 +31,14 @@
 </div>
 
 <script>
+//    theApp.setup()
+//    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+document.addEventListener('OSVLoaded', function() {
     theApp.setup()
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+});
+
 </script>
 
 </body>
