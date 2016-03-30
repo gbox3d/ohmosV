@@ -29,5 +29,13 @@ document.addEventListener('OSVLoaded', function() {
         theApp.setup()
     });
 ```
-amd 실행환경이 준비되면 OSVLoaded 이밴트가 발생한다.
+
+헤더태그부분에 아래 코드를 삽인한다.
+
+```html
+<script data-main="amd/main" src="amd/lib/require.js"></script>
+```
+위의 코드에서 theApp전역객체에 amd 객체를 초기화해준다. 이것이 완료되면 OSVLoaded 이밴트가 발생한다.
+
+
 
