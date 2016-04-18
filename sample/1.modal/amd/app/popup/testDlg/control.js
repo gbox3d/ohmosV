@@ -16,7 +16,8 @@ define(
 
                     callback(this_dom.querySelector('#usr').value);
 
-                    $(this_dom.querySelector('.modal')).modal('hide');
+                    property.hide();
+                    //$(this_dom.querySelector('.modal')).modal('hide');
                 } )
 
             },
@@ -30,7 +31,8 @@ define(
             },
             hide :function(param) {
 
-                $(this_dom).modal('hide');
+                $(this_dom.querySelector('.modal')).modal('hide');
+                //$(this_dom).modal('hide');
 
             }
         };

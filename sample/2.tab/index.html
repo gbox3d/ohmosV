@@ -28,6 +28,9 @@
 </div>
 
 <script>
+    requirejs.onError = function (e) {
+        console.log(e)
+    }
     document.addEventListener('OSVLoaded', function() {
         theApp.setup()
     });

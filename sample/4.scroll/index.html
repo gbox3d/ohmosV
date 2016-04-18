@@ -33,7 +33,9 @@
 <script>
 //    theApp.setup()
 //    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-
+requirejs.onError = function (e) {
+    console.log(e)
+}
 document.addEventListener('OSVLoaded', function() {
     theApp.setup()
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
