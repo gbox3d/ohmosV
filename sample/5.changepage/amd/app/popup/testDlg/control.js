@@ -7,7 +7,8 @@ define(
 
         var this_dom,callback;
 
-        return {
+
+        var property ={
             setup : function(name) {
 
                 this_dom = document.querySelector("#amd-popup-" + name);
@@ -15,8 +16,9 @@ define(
                 this_dom.querySelector('#btn-ok').addEventListener('click',function() {
 
                     callback(this_dom.querySelector('#usr').value);
+                    property.hide();
 
-                    $(this_dom.querySelector('.modal')).modal('hide');
+
                 } )
 
             },
@@ -29,9 +31,12 @@ define(
             },
             hide :function(param) {
 
-                $(this_dom).modal('hide');
+                //$(this_dom).modal('hide');
+                $(this_dom.querySelector('.modal')).modal('hide');
 
             }
         };
+
+        return property;
     }
 );
