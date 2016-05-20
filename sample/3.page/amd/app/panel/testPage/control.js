@@ -8,7 +8,7 @@ define(
         //디랙티브와 연결
         var this_dom;
 
-        var property ={
+        var property = {
             setup : function(name) {
                 //이밴트 핸들러는 여기에
                 this_dom = document.querySelector("#amd-popup-" + name);
