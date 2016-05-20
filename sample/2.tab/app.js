@@ -11,7 +11,7 @@ var theApp = {
         downEvent : "touchstart",
         upEvent : "touchend"
     },
-    setup : function() {
+    setup : function(osvCore) {
 
         var scope = this;
 
@@ -22,7 +22,7 @@ var theApp = {
                     function(next) {
 
                         //amd 셋업
-                        scope.amd.setupAMD({
+                        osvCore.amd.setupAMD({
                             modules : [
                                 {
                                     name : 'tabview',
@@ -42,7 +42,7 @@ var theApp = {
                     if(!error) { //에러 없이 모두 과정 마침..
                         console.log('success start app');
 
-                        scope.amd.panel['tabview'].show();
+                        osvCore.amd.panel['tabview'].show();
 
                     }
                     else {

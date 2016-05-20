@@ -16,7 +16,7 @@ define(
 
                 this_dom.querySelector('.btn.testmodal').addEventListener('click',function() {
 
-                    theApp.amd.popup.testDlg.show({
+                    theApp.osvCore.amd.popup.testDlg.show({
                         callback : function(val) {
 
                             this_dom.querySelector('.log-tex').innerText = 'hi~ ' + val;
@@ -30,7 +30,7 @@ define(
                 this_dom.querySelector('#btn-next').addEventListener('click',function() {
                     console.log('click')
                     property.hide();
-                    theApp.amd.panel['testPage2'].show();
+                    theApp.osvCore.amd.panel['testPage2'].show();
 
                 });
 

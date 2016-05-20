@@ -6,28 +6,30 @@
  */
 console.log('loading amd loader module');
 
-requirejs.config({
-    //By default load any module IDs from js/lib
-    baseUrl: 'amd/lib',
-    paths: {
-        app: '../app'
-    }
-});
 
 (function () {
 
-    function ohmOSVCore() {
+    function ohmOSVCore(option) {
 
-        var theApp = this;
+        requirejs.config({
+            //By default load any module IDs from js/lib
+            baseUrl: option.baseUrl,//'../amdlib/lib',
+            paths: {
+                app: option.appPath//'../../1.modal/amd/app'
+            }
+        });
 
-        theApp.module = {};
-        theApp.amd = {
+
+        var scope = this;
+
+        scope.module = {};
+        scope.amd = {
             panel : {},
             popup : {},
             card : {}
         };
 
-        theApp.amd.setupAMD = function (option) {
+        scope.amd.setupAMD = function (option) {
 
             console.log('start amd loader system 1.3')
 
@@ -49,8 +51,8 @@ requirejs.config({
 
                     module.setup(name,'panel');
 
-                    theApp.amd.panel[name] = module;
-                    //theApp.module['panel_' + name] = module;
+                    scope.amd.panel[name] = module;
+                    //scope.module['panel_' + name] = module;
 
                     console.log(name + ' panel module load success');
 
@@ -81,7 +83,7 @@ requirejs.config({
 
                     module.setup(name,'popup');
 
-                    theApp.amd.popup[name] = module;
+                    scope.amd.popup[name] = module;
 
                     console.log(name + ' popup module load success');
 
@@ -112,8 +114,8 @@ requirejs.config({
 
                     module.setup(name,'card');
 
-                    theApp.amd.card[name] = module;
-                    //theApp.module['popup_' + name] = module;
+                    scope.amd.card[name] = module;
+                    //scope.module['popup_' + name] = module;
 
                     console.log(name + ' card module load success');
 

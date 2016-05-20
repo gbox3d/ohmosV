@@ -18,23 +18,30 @@
     <link rel="stylesheet" href="../../libs/bootstrap/css/bootstrap.min.css">
     <script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
 
-
-    <script data-main="amd/main" src="amd/lib/require.js"></script>
-
     <script src="app.js"></script>
+    <script data-main="../../libs/amdlib/main" src="../../libs/amdlib/lib/require.js"></script>
 
 </head>
 <body style="margin: 0px" >
 
-<div  id="root-container" class="container">
+<div id="root-container" >
 </div>
 
 <script>
     requirejs.onError = function (e) {
         console.log(e)
     }
-    document.addEventListener('OSVLoaded', function() {
-        theApp.setup()
+    document.addEventListener('OSVLoaded', function(evt) {
+
+        theApp.setup(
+                new evt.ohmOSVCoreModule(
+                        {
+                            baseUrl : '../../libs/amdlib/lib',
+                            appPath : '../../../sample/3.page/amd/app'
+                        }
+
+                ));
+
     });
 </script>
 

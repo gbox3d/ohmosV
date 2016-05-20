@@ -10,7 +10,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Expires" content="-1">
 
-    <title> 페이지 전환 예제 </title>
+    <title>팝업창 예제 </title>
 
     <script src="../../libs/extra/jquery-2.0.3.min.js"></script>
     <script src="../../libs/extra/async.js"></script>
@@ -19,20 +19,29 @@
     <script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="app.js"></script>
-    <script data-main="amd/main" src="amd/lib/require.js"></script>
+    <script data-main="../../libs/amdlib/main" src="../../libs/amdlib/lib/require.js"></script>
 
 </head>
 <body style="margin: 0px" >
 
-<div  id="root-container">
+<div id="root-container" >
 </div>
 
 <script>
     requirejs.onError = function (e) {
         console.log(e)
     }
-    document.addEventListener('OSVLoaded', function() {
-        theApp.setup()
+    document.addEventListener('OSVLoaded', function(evt) {
+
+        theApp.setup(
+                new evt.ohmOSVCoreModule(
+                        {
+                            baseUrl : '../../libs/amdlib/lib',
+                            appPath : '../../../sample/5.changepage/amd/app'
+                        }
+
+                ));
+
     });
 </script>
 

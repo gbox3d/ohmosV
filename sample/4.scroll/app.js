@@ -11,8 +11,9 @@ var theApp = {
         downEvent : "touchstart",
         upEvent : "touchend"
     },
-    setup : function() {
+    setup : function(osvCore) {
 
+        this.osvCore = osvCore;
         var scope = this;
 
         (function() {
@@ -20,18 +21,10 @@ var theApp = {
             async.waterfall(
                 [
                     ////부트로더
-                    //function(next) {
-                    //    //amd 모듈 세팅할 준비가 되면
-                    //    scope.onAMD_Load = function() {
-                    //        console.log('now read AMD system')
-                    //        next(null);
-                    //
-                    //    }
-                    //},
                     function(next) {
 
                         //amd 셋업
-                        scope.amd.setupAMD(
+                        osvCore.amd.setupAMD(
                             {
                                 modules : [
 
@@ -52,7 +45,7 @@ var theApp = {
 
                     if(!error) { //에러 없이 모두 과정 마침..
                         console.log('success start app');
-                        scope.amd.panel.testPage.show();
+                        osvCore.amd.panel.testPage.show();
 
                     }
                     else {

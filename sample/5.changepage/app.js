@@ -11,10 +11,11 @@ var theApp = {
         downEvent : "touchstart",
         upEvent : "touchend"
     },
-    setup : function() {
+    setup : function(osvCore) {
 
+        this.osvCore = osvCore;
         var scope = this;
-
+        
         (function() {
 
             async.waterfall(
@@ -22,7 +23,7 @@ var theApp = {
                     function(next) {
 
                         //amd 셋업
-                        scope.amd.setupAMD(
+                        osvCore.amd.setupAMD(
                             {
                                 modules : [
                                     {
@@ -50,7 +51,7 @@ var theApp = {
 
                     if(!error) { //에러 없이 모두 과정 마침..
                         console.log('success start app');
-                        scope.amd.panel['testPage'].show();
+                        osvCore.amd.panel['testPage'].show();
 
                     }
                     else {

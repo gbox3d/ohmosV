@@ -16,7 +16,7 @@ define(
 
                 this_dom.querySelector('.btn.testmodal').addEventListener('click',function() {
 
-                    theApp.amd.popup.testDlg.show({
+                    theApp.osvCore.amd.popup.testDlg.show({
                         callback : function(val) {
 
                             this_dom.querySelector('.log-tex').innerText = 'hi~ ' + val;
@@ -32,7 +32,7 @@ define(
 
                     console.log('click')
 
-                    theApp.amd.popup.waitDlg.show({
+                    theApp.osvCore.amd.popup.waitDlg.show({
                         callback : function(val) {
                             //this_dom.querySelector('.log-tex').innerText = 'hi~ ' + val;
                         },
@@ -40,7 +40,7 @@ define(
                     });
 
                     setTimeout(function () {
-                        theApp.amd.popup.waitDlg.hide()
+                        theApp.osvCore.amd.popup.waitDlg.hide()
                     },3000);
                     
                     

@@ -17,7 +17,7 @@ define(
                 this_dom.querySelector('#btn-back').addEventListener('click',function() {
 
                     property.hide();
-                    theApp.amd.panel['testPage'].show()
+                    theApp.osvCore.amd.panel['testPage'].show()
                 });
 
             },

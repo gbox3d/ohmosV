@@ -19,7 +19,7 @@
     <script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="app.js"></script>
-    <script data-main="amd/main" src="amd/lib/require.js"></script>
+    <script data-main="../../libs/amdlib/main" src="../../libs/amdlib/lib/require.js"></script>
 
 </head>
 <body style="margin: 0px" >
@@ -31,8 +31,17 @@
     requirejs.onError = function (e) {
         console.log(e)
     }
-    document.addEventListener('OSVLoaded', function() {
-        theApp.setup()
+    document.addEventListener('OSVLoaded', function(evt) {
+
+        theApp.setup(
+                new evt.ohmOSVCoreModule(
+                {
+                    baseUrl : '../../libs/amdlib/lib',
+                    appPath : '../../../sample/2.tab/amd/app'
+                }
+
+        ));
+
     });
 </script>
 

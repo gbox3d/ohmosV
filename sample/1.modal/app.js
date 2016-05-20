@@ -11,6 +11,7 @@ var theApp = {
     },
     setup : function(osvCore) {
 
+        this.osvCore = osvCore;
         console.log('start setup App')
         var scope = this;
         async.waterfall(
