@@ -9,7 +9,7 @@ var theApp = {
         downEvent : "touchstart",
         upEvent : "touchend"
     },
-    setup : function() {
+    setup : function(osvCore) {
 
         console.log('start setup App')
         var scope = this;
@@ -18,7 +18,7 @@ var theApp = {
                 //amd 셋업
                 function(next) {
 
-                    scope.amd.setupAMD({
+                    osvCore.amd.setupAMD({
                         modules : [
                             {
                                 name : 'testDlg',
@@ -35,7 +35,7 @@ var theApp = {
             function(error,results) {
                 if(!error) { //에러 없이 모두 과정 마침..
                     console.log('success start app')
-                    scope.amd.popup['testDlg'].show(
+                    osvCore.amd.popup['testDlg'].show(
                         {
                             usr_name : 'gbox',
                             callback : function(val) {

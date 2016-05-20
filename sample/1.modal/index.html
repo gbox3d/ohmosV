@@ -32,9 +32,16 @@
     requirejs.onError = function (e) {
         console.log(e)
     }
-    document.addEventListener('OSVLoaded', function() {
-        theApp.setup()
+    document.addEventListener('OSVLoaded', function(evt) {
+        theApp.setup(new evt.ohmOSVCoreModule())
+        //console.log(evt);
+
     });
+
+
+
+
+
 </script>
 
 </body>
