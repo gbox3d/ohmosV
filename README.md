@@ -22,7 +22,7 @@ require.js 기반으로 작성된 html5 SPA(Single Page Application) framework�
 
 ### Usage ###
 
--초기화 코드
+-초기화 코드 (index.html 일부분)
 
 ```js
 
@@ -46,7 +46,7 @@ document.addEventListener('OSVLoaded', function(evt) {
 
 
 
--setup 함수 예제
+-setup 함수 예제 ( app.js 일부분)
 
 ```js
 var theApp = {
@@ -80,5 +80,61 @@ var theApp = {
 ```
 위의 코드에서 theApp전역객체에 amd 객체를 초기화해준다. 이것이 완료되면 OSVLoaded 이밴트가 발생한다.
 
+예제에서는 모듈은 amd->app 폴더에 있습니다.
+app/ 하단으로 폴더이름을 만들고자 하는 모듈이름과 같게 명명합니다.
+그 안에 control.js,directive.html,style.css 를 만듭니다. 
 
+control.js 의 예 는 아래와 같습니다
+```js
 
+define(
+    function() {
+
+        //디랙티브와 연결
+        var this_dom;
+
+        var property = {
+            setup : function(name,type) {
+                //이밴트 핸들러는 여기에
+                this_dom = document.querySelector("#amd-"+ type +"-" + name);
+
+            },
+            show : function(option) {
+                //화면 재구성
+
+            },
+            hide : function() {
+                //화면 종료
+
+            }
+
+        };
+
+        return property;
+    }
+);
+```
+
+directive.html 은 아래와 같습니다.
+id 인 amd-yyy-xxx 에서
+yyy 는 모듈의 형태에 따라 popup,panel,card 등으로 정합니다
+xxx 는 모듈의 이름을 써줍니다.
+```html
+<div id="amd-yyy-xxx" class="container-fluid hide" >
+
+</div>
+```
+
+style.css 에는 amd-yyy-xxx 밑으로 적용하고 싶은 css를 추가 해줍니다. 
+
+## 폴더 구성 예 ##
+root +--- amd
+     |   |----+ app
+     |        |--- panel
+     |        |--- popup
+     |             +---testDlg
+     |                 +--- control.js
+     |                 |--- directive.html
+     |                 |---v style.css
+     |--- app.js
+     |--- index.html
