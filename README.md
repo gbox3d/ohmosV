@@ -11,8 +11,8 @@ require.js 기반으로 작성된 html5 SPA(Single Page Application) framework�
 
 | Resource | Location |
 | -------------- | -------------- |
-| Require JS       | [http://www.requirejs.org/) |
-| Node JS          | [https://nodejs.org/en/) |
+| Require JS       | http://www.requirejs.org/ |
+| Node JS          | https://nodejs.org/en/ |
 
 ### what's new ###
 -1.3 
