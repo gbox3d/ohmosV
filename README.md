@@ -1,9 +1,26 @@
-# ohmosV 1.3
+ ohmosV 1.3
+===========
+
+
+#### JavaScript UI kernel for modern web ####
+
 require.js 기반으로 작성된 html5 SPA(Single Page Application) framework입니다.
 뷰단위로 나눠서 작업가능하며 html,css,js를 뷰단위로 분리하여 관리 할수있습니다.
 
-어플리캐이션 전역객체의 이름은 theApp로 정해져있습니다
+## Useful links
 
+| Resource | Location |
+| -------------- | -------------- |
+| Require JS       | [http://www.requirejs.org/) |
+| Node JS          | [https://nodejs.org/en/) |
+
+### what's new ###
+-1.3 
+1.  amd 관련한 lib 파일과 폴더를 공유가능하도록 재구성
+2. theApp 으로 어플리캐이션 프레임웍 전역객체를 고정하지않아도 되도록 구성
+( OSVLoaded 이밴트에서 프레임웍코어 객체인 ohmOSVCoreModule 를  콜백함수로 넣어 주도록 수정했음)
+
+### Usage ###
 
 -초기화 코드
 
