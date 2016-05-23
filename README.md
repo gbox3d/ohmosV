@@ -1,8 +1,6 @@
  ohmosV 1.3
 ===========
 
-![ohmosV](https://4.bp.blogspot.com/-hLZ1La-5vR4/V0KPY2OMCjI/AAAAAAAABO0/mG3zOm47TC0Exfa-RkzkeW1wmumZKvOmgCLcB/s1600/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%2B2016-05-23%2B%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%2B2.04.13.png)
-
 #### JavaScript UI kernel for modern web ####
 
 require.js 기반으로 작성된 html5 SPA(Single Page Application) framework입니다.
@@ -129,16 +127,5 @@ xxx 는 모듈의 이름을 써줍니다.
 style.css 에는 amd-yyy-xxx 밑으로 적용하고 싶은 css를 추가 해줍니다. 
 
 ## 폴더 구성 예 ##
-```txt
-root + 
-     |- amd +
-     |      |- app +
-     |             |- panel
-     |             |- popup +
-     |                      |-testDlg +
-     |                                |- control.js
-     |                                |- directive.html
-     |                                |- style.css
-     |- app.js
-     |- index.html
-```
+
+![ohmosV](https://4.bp.blogspot.com/-hLZ1La-5vR4/V0KPY2OMCjI/AAAAAAAABO0/mG3zOm47TC0Exfa-RkzkeW1wmumZKvOmgCLcB/s1600/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%2B2016-05-23%2B%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%2B2.04.13.png)
