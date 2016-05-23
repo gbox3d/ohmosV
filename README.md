@@ -36,7 +36,7 @@ document.addEventListener('OSVLoaded', function(evt) {
                 new evt.ohmOSVCoreModule(
                 {
                     baseUrl : '../../libs/amdlib/lib',
-                    appPath : '../../../sample/2.tab/amd/app'
+                    appPath : '../../../sample/1.modal/amd/app'
                 }
 
         ));
