@@ -1,6 +1,7 @@
  ohmosV 1.3
 ===========
 
+![arduino](https://plus.google.com/u/0/photos/albums/pjepc5j34mda2m6dmj5md7rsmm12irnqu?pid=6287715158709401458&oid=110687673892501970268)
 
 #### JavaScript UI kernel for modern web ####
 
