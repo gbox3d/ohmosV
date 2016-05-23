@@ -127,6 +127,7 @@ xxx 는 모듈의 이름을 써줍니다.
 
 style.css 에는 amd-yyy-xxx 밑으로 적용하고 싶은 css를 추가 해줍니다. 
 
+```txt
 ## 폴더 구성 예 ##
 root +--- amd
      |   |----+ app
@@ -138,3 +139,4 @@ root +--- amd
      |                 |---v style.css
      |--- app.js
      |--- index.html
+```
