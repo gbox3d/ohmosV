@@ -16,50 +16,48 @@ var theApp = {
         this.osvCore = osvCore;
         var scope = this;
 
-        (function() {
-
-            async.waterfall(
-                [
-                    function(next) {
-
-                        //amd 셋업
-                        osvCore.amd.setupAMD(
-                            {
-                                modules : [
-                                    {
-                                        name : 'testDlg',
-                                        type: 'popup'
-                                    },
-                                    {
-                                        name : 'testPage',
-                                        type : 'panel'
-                                    }
-                                ],
-                                callback : function() {
-                                    console.log('AMD complete');
-                                    next(null);
+        async.waterfall(
+            [
+                //amd 셋업
+                function(next) {
+                    console.log('start setup amd ========================================');
+                    osvCore.amd.setupAMD(
+                        {
+                            modules : [
+                                {
+                                    name : 'testDlg',
+                                    type: 'popup'
+                                },
+                                {
+                                    name : 'testPage',
+                                    type : 'panel'
                                 }
+                            ],
+                            callback : function() {
+                                console.log('AMD complete ========================================');
+                                next(null);
                             }
-                        );
-                    }
-                ],
-                function(error,results) {
+                        }
+                    );
+                }
+            ],
+            function(error,results) {
 
-                    if(!error) { //에러 없이 모두 과정 마침..
-                        console.log('success start app');
-                        osvCore.amd.panel.testPage.show();
-
-                    }
-                    else {
-                        console.log(error);
-                        alert(JSON.stringify(error));
-
-                    }
+                if(!error) { //에러 없이 모두 과정 마침..
+                    console.log('success start app');
+                    osvCore.amd.panel.testPage.show();
 
                 }
-            );
+                else {
+                    console.log(error);
+                    alert(JSON.stringify(error));
 
-        }).bind(theApp)()
+                }
+
+            }
+        );
+
+
 
     }
 };
