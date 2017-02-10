@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -22,30 +23,27 @@
     <script src="app.js"></script>
 
 </head>
+
 <body>
 
-<div id="root-container">
-</div>
+    <div id="root-container">
+    </div>
 
-<script>
-
-    requirejs.onError = function (e) {
-        console.log(e)
-    }
-    document.addEventListener('OSVLoaded', function(evt) {
-        theApp.setup(new evt.ohmOSVCoreModule(
-                {
-                    baseUrl : '../../libs/amdlib/lib',
-                    appPath : '../../../sample/1.modal/amd/app'
+    <script>
+        requirejs.onError = function(e) {
+            console.log(e)
+        }
+        document.addEventListener('OSVLoaded', function(evt) {
+            theApp.setup(new evt.ohmOSVCoreModule({
+                    baseUrl: '../../libs/amdlib/lib',
+                    appPath: '../../../sample/1.modal/amd/app'
                 }
 
-        ));
+            ));
 
-    });
-
-
-
-</script>
+        });
+    </script>
 
 </body>
+
 </html>

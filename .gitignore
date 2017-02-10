@@ -454,3 +454,6 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 
+
+/node_modules
+

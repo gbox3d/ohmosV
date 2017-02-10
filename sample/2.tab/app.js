@@ -3,15 +3,15 @@
  */
 
 
-
+//const async = require("../../node_modules/async")
 var theApp = {
 
-    version : '0.0.1',
-    event : {
-        downEvent : "touchstart",
-        upEvent : "touchend"
+    version: '0.0.1',
+    event: {
+        downEvent: "touchstart",
+        upEvent: "touchend"
     },
-    setup : function(osvCore) {
+    setup: function(osvCore) {
 
         var scope = this;
 
@@ -23,13 +23,11 @@ var theApp = {
 
                         //amd 셋업
                         osvCore.amd.setupAMD({
-                            modules : [
-                                {
-                                    name : 'tabview',
-                                    type : 'panel'
-                                }
-                            ],
-                            callback : function() {
+                            modules: [{
+                                name: 'tabview',
+                                type: 'panel'
+                            }],
+                            callback: function() {
                                 console.log('AMD complete');
                                 next(null);
 
@@ -37,15 +35,14 @@ var theApp = {
                         });
                     }
                 ],
-                function(error,results) {
+                function(error, results) {
 
-                    if(!error) { //에러 없이 모두 과정 마침..
+                    if (!error) { //에러 없이 모두 과정 마침..
                         console.log('success start app');
 
                         osvCore.amd.panel['tabview'].show();
 
-                    }
-                    else {
+                    } else {
                         console.log(error);
                         alert(JSON.stringify(error));
 
@@ -58,4 +55,3 @@ var theApp = {
 
     }
 };
-

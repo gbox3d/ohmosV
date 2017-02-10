@@ -2,7 +2,7 @@
  * Created by gbox3d on 2014. 2. 26..
  */
 
-
+const async = require("../../node_modules/async")
 
 var theApp = {
 

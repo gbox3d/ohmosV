@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -22,28 +23,29 @@
     <script data-main="../../libs/amdlib/main" src="../../libs/amdlib/lib/require.js"></script>
 
 </head>
-<body style="margin: 0px" >
 
-<div id="root-container" >
-</div>
+<body style="margin: 0px">
 
-<script>
-    requirejs.onError = function (e) {
-        console.log(e)
-    }
-    document.addEventListener('OSVLoaded', function(evt) {
+    <div id="root-container">
+    </div>
 
-        theApp.setup(
-                new evt.ohmOSVCoreModule(
-                        {
-                            baseUrl : '../../libs/amdlib/lib',
-                            appPath : '../../../sample/6.wait_popup/amd/app'
-                        }
+    <script>
+        requirejs.onError = function(e) {
+            console.log(e)
+        }
+        document.addEventListener('OSVLoaded', function(evt) {
+
+            theApp.setup(
+                new evt.ohmOSVCoreModule({
+                        baseUrl: '../../libs/amdlib/lib',
+                        appPath: '../../../sample/6.popup/amd/app'
+                    }
 
                 ));
 
-    });
-</script>
+        });
+    </script>
 
 </body>
+
 </html>
